@@ -10,7 +10,7 @@ except ImportError:
     from distutils.core import setup
 
 
-version = '0.1.2'
+version = '0.1.3'
 
 
 if sys.argv[-1] == 'publish':
@@ -38,9 +38,9 @@ setup(
     version=version,
     description="""A Django wrapper for the Bootstrap Select library""",
     long_description=readme + '\n\n' + history,
-    author='Joshua Massover',
-    author_email='joshua.massover@gmail.com',
-    url='https://github.com/voxy/django-bootstrap-select',
+    author='Miguel M Lopes',
+    author_email='mzramnadev@gmail.com',
+    url='https://github.com/mzramna/django-bootstrap-select/',
     packages=[
         'bootstrap_select',
     ],
@@ -52,10 +52,8 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
-        'Framework :: Django :: 1.8',
-        'Framework :: Django :: 1.9',
-        'Framework :: Django :: 1.10',
-        'Framework :: Django :: 1.11',
+        'Framework :: Django :: 3',
+        'Framework :: Django :: 2.2',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
