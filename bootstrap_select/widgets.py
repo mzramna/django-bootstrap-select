@@ -1,4 +1,3 @@
-from django.contrib.staticfiles.templatetags.staticfiles import static
 from django import forms
 from django.forms import Select
 from django.utils.encoding import force_text
