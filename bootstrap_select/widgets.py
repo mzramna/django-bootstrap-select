@@ -3,7 +3,7 @@ from django.forms import Select
 from django.utils.encoding import force_text
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-
+from django.templatetags.static import static
 from . import settings as bootstrap_select_settings
 
 
@@ -12,15 +12,15 @@ class BootstrapSelect(Select):
     @property
     def media(self):
         css = {
-          'all': ['//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css',  # noqa
+          'all': ['//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.17/css/bootstrap-select.min.css',  # noqa
                   static('bootstrap_select/bootstrap_select.css'), ]
         }
-        js = ['//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js', ]  # noqa
+        js = ['//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.17/js/bootstrap-select.min.js', ]  # noqa
 
         if self.bootstrap_css:
-            css['all'] = ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'] + css['all']  # noqa
+            css['all'] = ['//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'] + css['all']  # noqa
         if self.bootstrap_js:
-            js = ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'] + js
+            js = ['//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'] + js
         if self.jquery_js:
             js = ['//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'] + js
 
@@ -63,13 +63,3 @@ class BootstrapSelect(Select):
             html += ' data-tokens="{}"'.format(option_value)
         html += '{}>{}</option>'.format(selected_html, force_text(option_label))
         return format_html(html)
-
-    # Django 1.11
-    def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
-        option = super(BootstrapSelect, self).create_option(name, value, label, selected,
-                                                            index, subindex=None, attrs=None)
-        option['attrs']['data-content'] = label
-
-        if self.attrs.get('data-live-search'):
-            option['attrs']['data-tokens'] = value
-        return option
